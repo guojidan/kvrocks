@@ -311,6 +311,8 @@ jobs:
           outputs: type=docker
       - name: Test built image
         run: docker run --rm kvrocks:ci -v
+      - name: port accessible check
+        run: ~/local/bin/redis-cli -p 6666 PING | grep -E '(PONG|NOAUTH)' || exit 1
 
   build-and-test-in-container:
     name: Build and test in container
