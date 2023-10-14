@@ -314,6 +314,7 @@ jobs:
       - name: port accessible test
         run: |
           sudo apt install -y redis-tools
+          sudo ps -ef
           redis-cli -p 6666 PING | grep -E '(PONG|NOAUTH)' || exit 1
 
   build-and-test-in-container:
