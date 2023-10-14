@@ -313,7 +313,7 @@ jobs:
         run: docker run --rm kvrocks:ci -v
       - name: port accessible test
         run: |
-          apt install -y redis-tools
+          sudo apt install -y redis-tools
           redis-cli -p 6666 PING | grep -E '(PONG|NOAUTH)' || exit 1
 
   build-and-test-in-container:
