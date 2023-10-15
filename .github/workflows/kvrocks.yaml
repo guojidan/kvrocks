@@ -310,9 +310,8 @@ jobs:
           tags: kvrocks:ci
           outputs: type=docker
       - name: Test built image
-        run: docker run --rm kvrocks:ci -v
-      - name: port accessible test
         run: |
+          docker run --rm -d kvrocks:ci -v
           sudo apt install -y redis-tools
           sudo ps -ef
           redis-cli -p 6666 PING | grep -E '(PONG|NOAUTH)' || exit 1
